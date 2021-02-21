@@ -1,17 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  FlatList,
-  View,
-  Text,
-  StatusBar,
-  Button,
-  ActivityIndicator,
-  TouchableOpacity,
-  Dimensions
-} from 'react-native';
+import { StyleSheet, FlatList, View, Text, ActivityIndicator, TouchableOpacity, Dimensions } from 'react-native';
 import AutoHeightImage from 'react-native-auto-height-image';
 
 import Card from '../components/Card'
@@ -28,7 +16,6 @@ const Home: () => React$Node = ({navigation}) => {
         fetch(Globals.BASE_URL)
             .then((response) => response.json())
             .then((json) => {
-                console.log(json.results)
                 setData(json.results)
             })
             .catch((error) => {
@@ -44,7 +31,7 @@ const Home: () => React$Node = ({navigation}) => {
       ) : (
       <FlatList
         data={data}
-        keyExtractor={({ id }, index) => id}
+        keyExtractor={( id , index) => index.toString()}
         renderItem={({ item }) => (
             <Card>
             <TouchableOpacity 
@@ -78,12 +65,8 @@ const styles = StyleSheet.create({
      },
      title: {
          fontWeight: 'bold',
-         marginBottom: 10
-     },
-     direccion: {
-         flexDirection: 'row',
-         marginTop: 10,
-         marginBottom: 10
+         marginBottom: 10,
+         marginTop: 10
      },
      textColor: {
          color: 'blue'

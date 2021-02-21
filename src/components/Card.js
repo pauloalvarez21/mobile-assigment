@@ -1,10 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 
 const Card = (props) => {
     return(
         <View style={styles.containerStyle}>
-            {props.children}
+            <ScrollView>
+                {props.children}
+            </ScrollView>
         </View>
     );
 };
@@ -18,7 +20,7 @@ const styles = {
         borderColor: '#00B3E3',
         backgroundColor: '#FFFFFF',
         margin: 10,
-        padding: 3
+        padding: 3,
     }
 };
 
